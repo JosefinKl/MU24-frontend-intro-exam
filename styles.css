@@ -1,0 +1,29 @@
+body{
+    background: rgb(25,0,36);
+    background: linear-gradient(90deg, rgba(25,0,36,1) 0%, rgba(76,9,121,1) 35%, rgba(244,0,255,1) 100%);
+
+}
+
+header{
+    padding-top: 100px;
+}
+.grid-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.grid-item{
+    
+}
+ul{
+    list-style-type: none;
+    padding-left: 100px;
+}
+
+#addItem{
+    background-color: rgb(4, 58, 85);
+    color:antiquewhite;
+}
+

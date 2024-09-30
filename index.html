@@ -4,26 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> Fredagspizzans to do</h1>
+    <header></header>
     
- 
-    <ul>
-        <li>Handla</li>
-        <li>Gör deg</li>
-        <li>Kavla ut</li>
-        <li>Bred på tomatsås</li>
-        <li>Riv ost</li>
-        <li>Strö på ost</li>
-        <li>Lägg på skinka</li>
-        <li>Lägg på ananas</li>
-        <li>Grädda</li>
-        <li>Ät</li>
-    </ul>
+    <div class="grid-container">
+        <div class="grid-item"></div>
+        <div class="grid-item">
+            <h1> Veckans att göra lista</h1>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item">
+            <ul id = "toDo">
+                <!--
+                <li><input type = "checkbox" name ="Handla">
+                    <label>Handla</label></li>
+                <li><input type = "checkbox" name ="Tvätta">
+                    <label>Tvätta</label></li>
+                <li><input type = "checkbox" name ="Baka">
+                    <label>Baka</label></li>
+                -->
 
-    <input type = "checkbox" name ="Handla">
+            </ul>
+
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item">
+            <input id = addItemField type = "text">
+            <button id = "addItem"> + </button>   
+            
+        </div>
+        <div class="grid-item"> <button id ="save"> Save</button> </div>
+
+      </div>
+ 
+
+
+    
 
     <script src="script.js"></script>
 </body>
