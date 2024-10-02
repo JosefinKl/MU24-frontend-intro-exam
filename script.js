@@ -1,7 +1,11 @@
 const addButton = document.querySelector("#addItem")
 const addItemField = document.querySelector("#addItemField")
 const toDo = document.querySelector("#toDo")
+const emptyList = document.querySelector("#emptyList")
+let ulElement = document.querySelector('ul');
 
+
+console.log(ulElement)
 class ToDoTask {
     constructor(text, checked = false) {
       this.text = text;
@@ -61,6 +65,13 @@ if (arrayMedObjekt != null) {
      localStorage.setItem('minArray', jsonString);
   }
 
+    //Töm listan
+  function emptyListWhenClicked () {
+    localStorage.clear();
+    let items = [];
+    ulElement.innerHTML = '';
+  }
+
 //När man klickar på lägga till ny uppgift-knappen
 const addItemToHtmlWhenClicked = () => {
     let newToDo = new ToDoTask(addItemField.value, false);
@@ -70,7 +81,7 @@ const addItemToHtmlWhenClicked = () => {
 }
 
 addButton.addEventListener("click", addItemToHtmlWhenClicked);
-
+emptyList.addEventListener("click", emptyListWhenClicked)
 
 
     

@@ -24,3 +24,7 @@ ul{
     color:antiquewhite;
 }
 
+#emptyList{
+    background-color: rgb(4, 58, 85);
+    color:antiquewhite;
+}
