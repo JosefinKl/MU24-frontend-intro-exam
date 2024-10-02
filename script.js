@@ -1,48 +1,73 @@
-console.log("HEllo world")
-
 const addButton = document.querySelector("#addItem")
 const addItemField = document.querySelector("#addItemField")
 const toDo = document.querySelector("#toDo")
 
+class ToDoTask {
+    constructor(text, checked = false) {
+      this.text = text;
+      this.checked = checked;
+    }
+  
+    toggleChecked() {
+      this.checked = !this.checked;
+    }
+  }
 
 
-let i = 0;
 
+// Hämta JSON-strängen från Local Storage
+let jsonString = localStorage.getItem('minArray');
 
-const addItemToHtmlWhenClicked = () => {
-    i += 1;
+// Konvertera JSON-strängen tillbaka till en array med objekt
+let arrayMedObjekt = JSON.parse(jsonString);
+
+//console.log("array", arrayMedObjekt);
+
+let items = [];
+if (arrayMedObjekt != null) {
     
-    console.log(addItemField.value)
-    let newIl = document.createElement('li');
-    let inputElement = document.createElement('input');
-    let labelElement = document.createElement('label')
-    inputElement.setAttribute('type', 'checkbox');
-    inputElement.setAttribute('id', i);
-    
-    labelElement.textContent = addItemField.value;  
-    newIl.appendChild(inputElement);
-    newIl.appendChild(labelElement);
-    toDo.appendChild(newIl);
-    inputElement.addEventListener("onChanged", ()=>{console.log("klickad")})
-    
-        
+    //console.log("items", items)
+    for(let i=0; i<arrayMedObjekt.length; i++){
+        let item = new ToDoTask (arrayMedObjekt[i].text, arrayMedObjekt[i].checked);
+        items.push(item);
+        addItemToHtml(item)
+    }
 }
 
-// fun AddItemToHtml (string text, bool isChecked)
-    // Additem to html
+    //Lägger till uppgifter till HTML
+  function addItemToHtml(newToDo)
+  {
+      let newIl = document.createElement('li');
+      let inputElement = document.createElement('input');
+      let labelElement = document.createElement('label')
+      inputElement.setAttribute('type', 'checkbox');
+      inputElement.onclick = function(){newToDo.toggleChecked();
+        saveToLocalStorage();
+      };
+      labelElement.textContent = newToDo.text;  
+      inputElement.checked = newToDo.checked;
+      newIl.appendChild(inputElement);
+      newIl.appendChild(labelElement);
+      toDo.appendChild(newIl);
+  }
 
-// fun AddItemToStorage (string text, bool isChecked)
-    // read from storage
-    // add new item
-    // save to storage
+    // Spara data i local storage
+  function saveToLocalStorage (){
+     
+     // Konvertera arrayen till en JSON-sträng
+     let jsonString = JSON.stringify(items);
+    
+     // Spara JSON-strängen i Local Storage
+     localStorage.setItem('minArray', jsonString);
+  }
 
-// fun start
-    // read from storage
-    // for all items in array call AddItemToHtml
-
-// fun OnClick
-    // call AddItemToStorege
-    // call AddItemToHtml
+//När man klickar på lägga till ny uppgift-knappen
+const addItemToHtmlWhenClicked = () => {
+    let newToDo = new ToDoTask(addItemField.value, false);
+    items.push(newToDo);
+    addItemToHtml(newToDo);
+    saveToLocalStorage();
+}
 
 addButton.addEventListener("click", addItemToHtmlWhenClicked);
 
