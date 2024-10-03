@@ -17,15 +17,11 @@ class ToDoTask {
     }
   }
 
-
-
 // Hämta JSON-strängen från Local Storage
 let jsonString = localStorage.getItem('minArray');
 
 // Konvertera JSON-strängen tillbaka till en array med objekt
 let arrayMedObjekt = JSON.parse(jsonString);
-
-//console.log("array", arrayMedObjekt);
 
 let items = [];
 if (arrayMedObjekt != null) {
